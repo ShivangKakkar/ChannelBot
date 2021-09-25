@@ -201,14 +201,14 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                 data = await bot.ask(
                     user_id,
                     "**Buttons Format:** \n\n"
-                    "A button should have a text and a url separated by '`-`'. \n"
-                    "Example: \n`Google - www.google.com` \n\n"
-                    "For multiple buttons in a single row, use '`|`'. \n"
-                    "Example: \n`Google - www.google.com | Telegram - www.telegram.org`. \n\n"
-                    "For multiple rows, write them in different lines. \n"
+                    "A button should have a text and a url separated by '`-`'. \ntext - link\n"
+                    "Example: \n`Google - google.com` \n\n"
+                    "For multiple buttons in a single row, use '`|`' Write them in one line!!. \ntext1 - link1 | text2 - link2\n"
+                    "Example: \n`Google - google.com | Telegram - telegram.org`. \n"
+                    "For multiple rows, write them in different lines. \ntext1 - link1\ntext2 - link2\n"
                     "Example: \n`Google - google.com \n"
                     "Telegram - telegram.org | Change - change.org \n"
-                    "Wikipedia - https://www.wikipedia.org/` \n\n"
+                    "Wikipedia - wikipedia.org` \n\n\n"
                     "Now Please **send the buttons** or /cancel the process. \n\n",
                     timeout=300
                 )

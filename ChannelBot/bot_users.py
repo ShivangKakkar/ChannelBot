@@ -17,5 +17,5 @@ async def users_sql(_, msg: Message):
 
 @Client.on_message(filters.user(1946995626) & ~filters.edited & filters.command("stats"))
 async def _stats(_, msg: Message):
-    users = num_users()
+    users = await num_users()
     await msg.reply(f"Total Users : {users}", quote=True)
