@@ -198,8 +198,20 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                         await urc(user_id, channel_id)
                         await callback_query.message.delete()
             elif add == 'buttons':
-                data = await bot.ask(user_id, 'Please send the new buttons or /cancel the process.', timeout=300)
-                # Explain how buttons
+                data = await bot.ask(
+                    user_id,
+                    "**Buttons Format:** \n\n"
+                    "A button should have a text and a url separated by '`-`'. \n"
+                    "Example: \n`Google - www.google.com` \n\n"
+                    "For multiple buttons in a single row, use '`|`'. \n"
+                    "Example: \n`Google - www.google.com | Telegram - www.telegram.org`. \n\n"
+                    "For multiple rows, write them in different lines. \n"
+                    "Example: \n`Google - google.com \n"
+                    "Telegram - telegram.org | Change - change.org \n"
+                    "Wikipedia - https://www.wikipedia.org/` \n\n"
+                    "Now Please **send the buttons** or /cancel the process. \n\n",
+                    timeout=300
+                )
                 while True:
                     if data.text == '/cancel':
                         await data.reply('Cancelled', quote=True)
