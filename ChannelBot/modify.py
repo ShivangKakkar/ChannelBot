@@ -50,12 +50,14 @@ async def modify(_, msg: Message):
             await msg.edit_text(
                 caption,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                disable_web_page_preview=disable_webpage_preview
+                disable_web_page_preview=disable_webpage_preview,
+                parse_mode="markdown"
             )
         else:
             await msg.edit_text(
                 caption,
-                disable_web_page_preview=disable_webpage_preview
+                disable_web_page_preview=disable_webpage_preview,
+                parse_mode="markdown"
             )
     if sticker:
         await msg.reply_sticker(sticker, quote=False)

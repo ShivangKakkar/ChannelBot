@@ -98,7 +98,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                         [InlineKeyboardButton('Remove Caption', callback_data=f'remove+{change}+{channel_id}')],
                         [InlineKeyboardButton('<-- Back to Channel Settings', callback_data=f'home+{channel_id}')]
                     ]
-                    await callback_query.edit_message_text(f'Current Caption is : `{caption}` \n\nUse below buttons to change or remove it.', reply_markup=InlineKeyboardMarkup(buttons))
+                    await callback_query.edit_message_text(f'Current Caption is : \n\n{caption} \n\nUse below buttons to change or remove it.', reply_markup=InlineKeyboardMarkup(buttons))
                 else:
                     buttons = [
                         [InlineKeyboardButton('Add Caption', callback_data=f'add+{change}+{channel_id}')],
@@ -112,7 +112,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                         [InlineKeyboardButton('Remove URL Buttons', callback_data=f'remove+{change}+{channel_id}')],
                         [InlineKeyboardButton('<-- Back to Channel Settings', callback_data=f'home+{channel_id}')]
                     ]
-                    await callback_query.edit_message_text(f'Current Buttons are : `{buttons}` \n\nUse below buttons to change or remove it.', reply_markup=InlineKeyboardMarkup(_buttons))
+                    await callback_query.edit_message_text(f'Current Buttons are : \n\n`{buttons}` \n\nUse below buttons to change or remove it.', reply_markup=InlineKeyboardMarkup(_buttons))
                 else:
                     _buttons = [
                         [InlineKeyboardButton('Add Buttons', callback_data=f'add+{change}+{channel_id}')],
@@ -184,7 +184,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                 if data.text.lower() == '/cancel':
                     await data.reply('Cancelled', quote=True)
                 else:
-                    await set_caption(channel_id, data.text)
+                    await set_caption(channel_id, data.text.markdown)
                     await data.reply('Caption set successfully !', quote=True)
                     text, markup, sticker_id = await channel_settings(channel_id, bot)
                     if sticker_id:

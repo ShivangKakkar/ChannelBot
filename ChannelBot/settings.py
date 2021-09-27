@@ -15,7 +15,7 @@ async def channel_settings(channel_id, bot):
         sticker_id = info['sticker_id']
         edit_mode = info['edit_mode']
         if caption:
-            text += f'**Caption** : Set \n`{caption}` \n\n'
+            text += f"**Caption** : Set \n\n"
         else:
             text += f'**Caption** : Not Set. \n\n'
         if position:
@@ -24,7 +24,7 @@ async def channel_settings(channel_id, bot):
             position = 'below'
             text += f'**Caption Position** : {position.capitalize()} the previous caption\n\n'
         if buttons:
-            text += f'**Buttons** : Set \n`{buttons}` \n\n'
+            text += f"**Buttons** : Set \n\n"
         else:
             text += f'**Buttons** : Not Set. \n\n'
         if edit_mode:
