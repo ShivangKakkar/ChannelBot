@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from ChannelBot.database.users_sql import get_channels
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
+from pyrogram.errors import ChannelInvalid
 
 
 @Client.on_message((filters.regex(r'^Manage Channels$') | filters.command('channels')) & filters.private)
@@ -12,15 +13,16 @@ async def _manage(bot: Client, msg):
         await msg.reply(text, reply_markup=ReplyKeyboardMarkup(buttons, one_time_keyboard=True, resize_keyboard=True))
 
 
-# Differently made as it will be used in more than one places and follow DRY principle.
-# Why am I writing these comments ?
 async def manage_channels(user_id, bot: Client):
     status, channels = await get_channels(user_id)
     if status:
         text = 'Below are your channels.'
         buttons = []
         for channel in channels:
-            chat = await bot.get_chat(channel)
+            try:
+                chat = await bot.get_chat(channel)
+            except ChannelInvalid:
+                continue
             buttons.append([InlineKeyboardButton(chat.title, callback_data=f'settings+{chat.id}')])
         return True, buttons, text
     else:
