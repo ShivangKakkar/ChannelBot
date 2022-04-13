@@ -43,6 +43,8 @@ async def add_channel(channel_id, user_id):
     if not q:
         SESSION.add(Channel(channel_id, user_id))
         SESSION.commit()
+    else:
+        SESSION.close()
 
 
 async def remove_channel(channel_id):
@@ -50,6 +52,8 @@ async def remove_channel(channel_id):
     if q:
         SESSION.delete(q)
         SESSION.commit()
+    else:
+        SESSION.close()
 
 
 async def get_channel_info(channel_id):
@@ -67,7 +71,8 @@ async def get_channel_info(channel_id):
         SESSION.close()
         return True, info
     else:
-        return False, {}  # Redundant though
+        SESSION.close()
+        return False, {}
 
 
 async def set_caption(channel_id, caption):
@@ -77,6 +82,7 @@ async def set_caption(channel_id, caption):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -87,6 +93,7 @@ async def get_caption(channel_id):
         SESSION.close()
         return caption
     else:
+        SESSION.close()
         return ''
 
 
@@ -97,6 +104,7 @@ async def set_buttons(channel_id, buttons):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -107,6 +115,7 @@ async def get_buttons(channel_id):
         SESSION.close()
         return buttons
     else:
+        SESSION.close()
         return None
 
 
@@ -117,6 +126,7 @@ async def set_position(channel_id, position):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -127,6 +137,7 @@ async def get_position(channel_id):
         SESSION.close()
         return position
     else:
+        SESSION.close()
         return 'below'
 
 
@@ -137,6 +148,7 @@ async def set_sticker(channel_id, sticker):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -146,6 +158,8 @@ async def get_sticker(channel_id):
         sticker = q.sticker_id
         SESSION.close()
         return sticker
+    else:
+        SESSION.close()
 
 
 async def toggle_webpage_preview(channel_id, value):
@@ -160,6 +174,7 @@ async def toggle_webpage_preview(channel_id, value):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -169,6 +184,7 @@ async def get_webpage_preview(channel_id):
         SESSION.close()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -179,6 +195,7 @@ async def set_edit_mode(channel_id, edit_mode):
         SESSION.commit()
         return True
     else:
+        SESSION.close()
         return False
 
 
@@ -189,4 +206,5 @@ async def get_edit_mode(channel_id):
         SESSION.close()
         return edit_mode
     else:
+        SESSION.close()
         return 'media'
