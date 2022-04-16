@@ -10,16 +10,8 @@ async def string_to_buttons(string):
         r_b = row.split("|")
         for b in r_b:
             data = b.split('-')
-            text = data[0]
-            while text.startswith(" "):
-                text = text[1:]
-            while text.endswith(" "):
-                text = text[:-1]
-            url = data[1]
-            while url.startswith(" "):
-                url = url[1:]
-            while url.endswith(" "):
-                url = url[:-1]
+            text = data[0].strip()
+            url = data[1].strip()
             row_buttons.append(InlineKeyboardButton(text, url=url))
         buttons.append(row_buttons)
     return buttons
