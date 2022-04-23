@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, BigInteger
+from sqlalchemy import Column, String, Boolean, BigInteger
 from ChannelBot.database import BASE, SESSION
 
 
@@ -6,7 +6,7 @@ class Channel(BASE):
     __tablename__ = "channels"
     __table_args__ = {'extend_existing': True}
     channel_id = Column(BigInteger, primary_key=True)
-    admin_id = Column(Integer)
+    admin_id = Column(BigInteger)
     caption = Column(String, nullable=True)
     buttons = Column(String, nullable=True)
     position = Column(String, nullable=True)
@@ -23,9 +23,6 @@ class Channel(BASE):
         self.webpage_preview = webpage_preview
         self.sticker_id = sticker_id
         self.edit_mode = edit_mode
-
-    # def __repr__(self):
-    #     return "<User {} {} {} ({})>".format(self.thumbnail, self.thumbnail_status, self.video_to, self.channel_id)
 
 
 Channel.__table__.create(checkfirst=True)
