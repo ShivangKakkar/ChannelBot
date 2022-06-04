@@ -4,13 +4,13 @@ from pyrogram.types import InlineKeyboardButton
 class Data:
     # Start Message
     START = """
-Hey {}
+Hey,👋 {}
 
-Welcome to {}
+🙏,Welcome to {}
 
-You can use me to manage channels with tons of features. Use below buttons to learn more !
+You can use me to manage channels with tons of features. Use below buttons to learn more 😎!
 
-By @StarkBots
+By @szteambots
     """
 
     # Home Button
@@ -20,13 +20,13 @@ By @StarkBots
 
     # Rest Buttons
     buttons = [
-        [InlineKeyboardButton("✨ Bot Status and More Bots ✨", url="https://t.me/StarkBots/7")],
+        [InlineKeyboardButton("✨ Bot Status and More Bots ✨", url="https://t.me/szteambots/7")],
         [
             InlineKeyboardButton("How to Use ❔", callback_data="help"),
             InlineKeyboardButton("🎪 About 🎪", callback_data="about")
         ],
-        [InlineKeyboardButton("♥ More Amazing bots ♥", url="https://t.me/StarkBots")],
-        [InlineKeyboardButton("🎨 Support Group 🎨", url="https://t.me/StarkBotsChat")],
+        [InlineKeyboardButton("😋 More Amazing bots ", url="https://t.me/szteambots")],
+        [InlineKeyboardButton("👨‍💻 Support Group ", url="https://t.me/slbotzone")],
     ]
 
     # Help Message
@@ -36,27 +36,25 @@ To add a channel use keyboard button 'Add Channels' or alternatively for ease, u
 
 ✨ **Available Commands** ✨
 
-/about - About The Bot
-/help - This Message
-/start - Start the Bot
+✔/about - About The Bot
+✔/help - This Message
+✔/start - Start the Bot
 
 Alternative Commands
-/channels - List added Channels
-/add - Add a channel
-/report - Report a Problem
+✔/channels - List added Channels
+✔/add - Add a channel
+✔/report - Report a Problem
     """
 
     # About Message
     ABOUT = """
-**About This Bot** 
+🤷‍♂️ **About This Bot** 
 
-A telegram channel automation bot by @StarkBots
+A telegram channel automation bot by Sz Team Bots
 
-Source Code : [Click Here](https://github.com/StarkBotsIndustries/ChannelBot)
+✅Framework : [Pyrogram](docs.pyrogram.org)
 
-Framework : [Pyrogram](docs.pyrogram.org)
+✅Language : [Python](www.python.org)
 
-Language : [Python](www.python.org)
-
-Developer : @StarkProgrammer
+✅Developer : @Oshebrosl1
     """
