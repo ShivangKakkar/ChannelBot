@@ -23,14 +23,14 @@ from ChannelBot.string_to_buttons import string_to_buttons
 # Callbacks
 @Client.on_callback_query()
 async def _callbacks(bot: Client, callback_query: CallbackQuery):
-    user = await bot.get_me()
+    user = bot.me
     user_id = callback_query.from_user.id
-    mention = user["mention"]
+    mention = user.mention
     query = callback_query.data.lower()
     if query.startswith("home"):
         if query == 'home':
             chat_id = callback_query.from_user.id
-            message_id = callback_query.message.message_id
+            message_id = callback_query.message.id
             await bot.edit_message_text(
                 chat_id=chat_id,
                 message_id=message_id,
@@ -50,7 +50,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                 await callback_query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(markup), disable_web_page_preview=True)
     elif query == "about":
         chat_id = callback_query.from_user.id
-        message_id = callback_query.message.message_id
+        message_id = callback_query.message.id
         await bot.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,
@@ -60,7 +60,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
         )
     elif query == "help":
         chat_id = callback_query.from_user.id
-        message_id = callback_query.message.message_id
+        message_id = callback_query.message.id
         await bot.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,

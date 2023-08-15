@@ -20,7 +20,7 @@ from ChannelBot.string_to_buttons import string_to_buttons
 #     return channels_ids
 
 
-@Client.on_message(filters.channel & ~filters.edited & ~filters.forwarded)
+@Client.on_message(filters.channel & ~filters.forwarded)
 async def modify(_, msg: Message):
     channel_id = msg.chat.id
     caption = await get_caption(channel_id)
@@ -53,14 +53,12 @@ async def modify(_, msg: Message):
                 await msg.edit_text(
                     caption,
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    disable_web_page_preview=disable_webpage_preview,
-                    parse_mode="markdown"
+                    disable_web_page_preview=disable_webpage_preview
                 )
             else:
                 await msg.edit_text(
                     caption,
-                    disable_web_page_preview=disable_webpage_preview,
-                    parse_mode="markdown"
+                    disable_web_page_preview=disable_webpage_preview
                 )
         if sticker:
             await msg.reply_sticker(sticker, quote=False)
