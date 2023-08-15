@@ -1,13 +1,16 @@
 import os
+import loguru
+
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', False)
-
+LOGGER = loguru.logger
 if ENVIRONMENT:
     try:
         API_ID = int(os.environ.get('API_ID', 0))
     except ValueError:
         raise Exception("Your API_ID is not a valid integer.")
     API_HASH = os.environ.get('API_HASH', None)
+    OWNER_ID = os.environ.get('OWNER_ID', 6258709129)
     BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
     DATABASE_URL = os.environ.get('DATABASE_URL', None)
     DATABASE_URL = DATABASE_URL.replace("postgres", "postgresql")  # Sqlalchemy dropped support for "postgres" name.
@@ -17,11 +20,12 @@ if ENVIRONMENT:
         MUST_JOIN = MUST_JOIN.replace("@", "")
 else:
     # Fill the Values
-    API_ID = 0
-    API_HASH = ""
-    BOT_TOKEN = ""
-    DATABASE_URL = ""
+    API_ID = ... # api id here
+    OWNER_ID = ...
+    API_HASH = "Hash Here"
+    BOT_TOKEN = "TOKEN here"
+    DATABASE_URL = "Url here"
     DATABASE_URL = DATABASE_URL.replace("postgres", "postgresql")
-    MUST_JOIN = ""
+    MUST_JOIN = "OldLostFriends" # must join channel link here
     if MUST_JOIN.startswith("@"):
         MUST_JOIN = MUST_JOIN[1:]

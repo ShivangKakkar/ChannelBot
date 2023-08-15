@@ -14,7 +14,7 @@
   "formation": {
     "worker": {
       "quantity": 1,
-      "size": "free"
+      "size": "eco"
     }
   },
   "addons": [
@@ -45,6 +45,11 @@
     "BOT_TOKEN": {
       "description": "Obtain a Telegram bot token by contacting @BotFather",
       "required": true,
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Your id",
+      "required": false,
       "value": ""
     },
     "MUST_JOIN": {

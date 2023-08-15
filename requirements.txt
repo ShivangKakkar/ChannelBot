@@ -1,4 +1,4 @@
-pyrogram~=1.2.9
+pyrogram
 TgCrypto
 SQLAlchemy~=1.4.21
 psycopg2
